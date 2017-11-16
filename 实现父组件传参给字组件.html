@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+    <script type="text/javascript" src="vue1026.js"></script>
+</head>
+<body>
+<template id="sub">
+  {{age}}
+</template>
+  <div class="box">
+    <sub :age="id"></sub>
+  </div>
+  <script>
+    var vm=new Vue({
+      el:".box",
+      data:{
+        id:100
+      },
+      components:{
+        "sub":{
+          template:"#sub",
+          props:["age"]
+        }
+      }
+    })
+
+  </script>
+</body>
+</html>

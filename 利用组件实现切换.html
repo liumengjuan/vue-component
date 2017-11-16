@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="vue1026.js"></script>
+</head>
+<body>
+<template id="account">
+  <a href="#" v-on:click="cname='login'">登录</a>
+  <a href="#" v-on:click="cname='reset'">注册</a>
+  <component :is="cname"></component>
+</template>
+  <div class="box">
+    <account></account>
+  </div>
+  <script type="text/javascript">
+  //创建组件
+  Vue.component("account",{
+    template:"#account",
+    data:function () {
+       return{
+        cname:"login"
+       }
+    },
+    //创建子组件
+    components:{
+      'login':{
+        template:"<div>欢迎登录</div>"
+      },
+      'reset':{
+        template:"<div>欢迎注册</div>"
+      },
+    }
+  })
+    var vm=new Vue({
+      el:".box"
+    })
+
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="vue1026.js"></script>
+</head>
+<body>
+<template id="account">
+<h3>你好</h3>
+<a href="#">登录</a> 
+</template>
+<div class="box">
+    <account></account>
+</div>
+<script type="x-template" id="str">
+  <h3>我不好</h3>
+<a href="#">注册</a> 
+</script>
+  <script>
+    Vue.component("account",{
+      template:"#str"
+        })
+    var vm =new Vue({
+      el:".box",
+    })
+  </script>
+</body>
+</html>

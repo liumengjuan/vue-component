@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+
+  <script src="vue221.js"></script>
+</head>
+<body>
+<template id="account">
+  <name :tip="msg"></name>
+</template>
+  <div class="box">
+    <!-- <login :tip="cname"></login> -->
+    <account></account>
+  </div>
+  <script>
+  //方法一:
+    // var vm=new Vue({
+    //   el:".box",
+    //   data:{
+    //     cname:100,
+    //   },
+    //   components:{
+    //     "login":{
+    //       template:"<div> {{tip}}</div>",
+    //       props:["tip"]
+    //     }
+    //   }
+    // })
+  //方法二:
+  Vue.component("account",{
+    template:"#account",
+    data:function () {
+      return{
+        msg:"张三"
+      }
+    },
+    components:{
+      "name":{
+        template:"<div>{{tip}}</div>",
+        props:["tip"]
+      }
+    }
+
+  })
+  var vm=new Vue({
+    el:".box",
+  })
+
+  </script>
+</body>
+</html>

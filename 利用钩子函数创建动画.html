@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+ /*    .show-enter-active,.show-leave-active{
+      transition: all 2s ease;
+     }
+     .show-enter,.show-leave-to{
+     padding-left: 100px;
+     }
+    .show-enter-to,.show-leave{
+      padding-left: 10px;
+    }*/
+  .show{
+    transition: all 1Zs ease;
+  }
+ 
+  </style>
+<script  src="vue221.js"></script>
+</head>
+<body>
+<div class="box">
+<button @click="toggle">显示动画</button><br>
+  <transition 
+    @before-enter="beforeEnter" 
+      @enter="Enter" 
+      @after-enter="afterEnter">
+    <div v-show="isshow" class="show"> 你好你好你好</div>
+  </transition>  
+  </div>
+  <script type="text/javascript">
+  var vm=new Vue({
+    el:".box",
+    data:{
+        isshow:false,
+      },
+   methods:{
+    toggle:function () {
+      this.isshow=!this.isshow;
+    },
+    beforeEnter:function(el){
+      el.style.transform="translate(100px,0)";
+    },
+    Enter:function(el,done){
+      el.offsetWidth;
+      el.style.transform="translate(10px,0)";
+      done();
+    },
+    afterEnter:function(el){
+       this.isshow=!this.isshow;
+    }
+   }
+  })
+
+
+  </script>
+</body>
+</html>

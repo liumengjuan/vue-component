@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+    <script type="text/javascript" src="vue221.js"></script>
+</head>
+<body>
+  <div class="box">
+    <button @click="getdata">获取dom对象</button>
+    <div ref="mydiv">哈哈</div>
+     <button @click="getcom">获取组件对象</button>
+   <login ref="mycom"></login>  
+  </div>
+  <script>
+    var vm=new Vue({
+      el:".box",
+      methods:{
+        getdata:function () {
+          console.log(this.$refs.mydiv.innerHTML);
+        },
+        getcom:function(){
+          console.log(this.$refs.mycom.subname);
+        },
+      },
+        //创建一个私有组件
+        components:{
+          "login":{
+            data:function(){
+              return {
+                subname:"子组件名称"
+              }
+            },
+            template:"<h1>这是一个子组件</h1>"
+          }
+        }
+      
+    })
+
+  </script>
+</body>
+</html>

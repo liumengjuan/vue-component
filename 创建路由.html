@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="vue221.js"></script>
+  <script src="vue-router231.js"></script>
+</head>
+<body>
+<div class="box">
+  <router-link to="/login">登录</router-link>
+  <router-link to="/reset">注册</router-link>
+  <router-view></router-view>
+</div>
+  <script>
+   //创建组件
+   var str1=Vue.extend({});
+   var login1=Vue.extend({
+      template:"<div>登录页面</div>"
+   });
+   var login2=Vue.extend({
+    template:"<div>注册页面</div>"
+   });
+   //创建路由
+   var router11=new VueRouter({
+    routes:[
+    {path:"/login",component:login1},
+    {path:"/reset",component:login2}
+    ]
+   })
+    var vm=new Vue({
+      el:".box",
+      router:router11,
+    })
+
+
+
+  </script>
+</body>
+</html>

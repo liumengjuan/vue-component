@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="vue1026.js"></script>
+</head>
+<body>
+<template id="account">
+ <h3>我的组件</h3>
+  {{msg}}
+  <a href="#" @click="login">登录</a>
+  <reset></reset>
+</template>
+  <div class="box">
+    <account></account>
+  </div>
+  <script>
+  //创建全局组件
+    Vue.component("account",{//本行的account表示组件名称,要求在vue创建的对象控制区域内创建一个account标签
+        template:"#account",//本行的要求在div标签外面创建一个template标签,定义它的id为account
+        data:function () {
+          return{
+            msg:"hello"
+          }
+        },
+        methods:{
+          login:function(){
+            alert(this.msg);
+          }
+        },
+        //开始创建子组件
+        components:{
+          'reset':{//注意,因为子组件实在父组件内创建的,所以子组件创建出来的元素也必须要在父组件里使用,对应代码16行
+            template:"<h2>登录子组件内容</h2>",
+          }
+        }
+    })
+    var vm=new Vue({
+      el:'.box',
+    })
+
+
+  </script>
+</body>
+</html>

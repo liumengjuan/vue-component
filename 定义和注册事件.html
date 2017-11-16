@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="vue1026.js"></script>
+</head>
+<body>
+<template id="account">
+ <h3>我的组件</h3>
+  {{msg}}
+  <a href="#" @click="login">登录</a>
+</template>
+  <div class="box">
+    <account></account>
+  </div>
+  <script>
+  //创建全局组件
+    Vue.component("account",{//本行的account表示组件名称,要求在vue创建的对象控制区域内创建一个account标签
+        template:"#account",//本行的要求在div标签外面创建一个template标签,定义它的id为account
+        data:function () {//本行的data区别与new出来的vue里的data.这里的data只是一个对象,
+          return{//这个对象里的变量必须使用return给返回,否则得不到数据
+            msg:"hello"
+          }
+        },
+        methods:{//这里的methods与new出来的vue里的methods使用方式一样.都是用于接收事件方法
+          login:function(){
+            alert(this.msg);
+          }
+        }
+    })
+    var vm=new Vue({
+      el:'.box',
+    })
+
+
+  </script>
+</body>
+</html>
