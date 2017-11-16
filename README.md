@@ -104,7 +104,19 @@
     })
   </script>
 ```
-*利用钩子函数创建动画,注意:需要在style标签内给当前添加动画的元素一个样式
+*利用钩子函数创建动画,
+ 1、过渡动画进入
+          beforeEnter:function(el){}      过渡动画进入之前，一般在这个方法中定义目标元素的初始位置
+          enter:function(el,done){}       过渡动画进入中，在这个方法中定义目标元素的结束位置
+          afterEnter:function(el){}       过渡动画结束后，通常在这个方法里面重置初始值
+          enterCancelled:function(el){}   取消过渡动画时被调用
+      
+      2、过渡动画离开
+          beforeLeave:function(el){}      动画离开之前触发    
+          leave:function(el){}            过渡动画进入中触发
+          afterLeave:function(el){}       过渡动画离开结束后
+          leaveCancelled:function(el){}   取消过渡动画时被调用
+注意:需要在style标签内给当前添加动画的元素一个样式
 ```Java
  <style type="text/css">
   .show{
